@@ -1,0 +1,61 @@
+.store h2 {
+  font-size: 2rem;
+  margin: 0 0 20px;
+}
+
+.store .game-card {
+  flex-direction: column;
+}
+
+.store .card-body {
+  padding: 16px;
+  gap: 10px;
+}
+
+.store .card-body h3 {
+  font-size: 1.15rem;
+  color: #ffffff;
+}
+
+.store .card-body h3 a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.store .card-body h3 a:hover {
+  color: #ff9800;
+}
+
+.price {
+  color: #ff9800;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.desc {
+  margin: 0;
+  color: #d0d0d0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex: 1 0 auto;
+}
+
+.btn-buy {
+  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: auto;
+}
+
+.btn-buy:hover {
+  background: linear-gradient(90deg, #ffb74d, #ff9800);
+  transform: scale(1.05);
+}
+
