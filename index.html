@@ -1,36 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
-    <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Web Page</title>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/game_512.png" alt="icon" width="64">
-            <div>
-                <nav>
-                    <ul>
-                        <li><a href="#">Store</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="library.html">My Library</a></li>
-                    </ul>
-                </nav>
+  <header>
+    <div class="logo">
+      <img src="images/game_512.png" alt="icon" width="64">
+      <h1>Nitro 5</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="library.html">My Library</a></li>
+      </ul>
+    </nav>
+  </header>
 
-            </div>
+  <main>
+    <section class="top-games">
+      <h2>Top Games</h2>
+      <div class="game-grid">
+        <div class="game-card">
+          <img src="images/cs2.jpg" alt="Counter-Strike 2">
+          <h3>Counter-Strike 2</h3>
+          <p>Price: $20</p>
+          <button>Buy</button>
         </div>
-    </header>
-    <main>
-        <p>This is Store Page</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Web Page</p>
-        <p>Group: SE-2409</p>
-        <p>Command: Nitro 5</p>
-        <p>Mansur Tasbolat</p>
-        <P>Eraly Zalel</P>
-    </footer>
+        <div class="game-card">
+          <img src="images/detroit.jpg" alt="Detroit: Become Human">
+          <h3>Detroit: Become Human</h3>
+          <p>Price: $30</p>
+          <button>Buy</button>
+        </div>
+        <div class="game-card">
+          <img src="images/RDR2.jpg" alt="Red Dead Redemption 2">
+          <h3>Red Dead Redemption 2</h3>
+          <p>Price: $25</p>
+          <button>Buy</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="news">
+      <h2>Latest News</h2>
+      <div class="news-grid">
+        <article class="news-card">
+          <h3>CS2 Update Released!</h3>
+          <p>Check out the new maps and skins added in the latest CS2 update.</p>
+        </article>
+        <article class="news-card">
+          <h3>RDR2 Sale</h3>
+          <p>Red Dead Redemption 2 is now 30% off for a limited time!</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <h2>User Reviews</h2>
+      <div class="review-card">
+        <p>"CS2 is amazing! The graphics are insane!"</p>
+        <span>- John D.</span>
+      </div>
+      <div class="review-card">
+        <p>"RDR2 story mode kept me hooked for hours."</p>
+        <span>- Anna K.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 My Web Page</p>
+    <p>Group: SE-2409</p>
+    <p>Command: Nitro 5</p>
+    <p>Mansur Tasbolat & Eraly Zalel</p>
+  </footer>
+</body>
 </html>
