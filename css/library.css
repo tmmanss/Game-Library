@@ -1,6 +1,3 @@
-/* Library page specific styles */
-
-/* Library Grid Layout */
 .library .game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
