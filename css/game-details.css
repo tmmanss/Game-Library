@@ -1,4 +1,6 @@
-/* Game details page with Grid layout */
+body {
+  display: block !important;
+}
 
 .game-details {
   width: 100%;
@@ -18,7 +20,7 @@
   background: #211F30;
   border-radius: 16px;
   padding: 30px;
-  grid-column: 1 / -1;
+  grid-column: 1;
 }
 
 .video-section h1 {
@@ -52,28 +54,32 @@
 }
 
 .info-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 0;
   background: #211F30;
   border-radius: 16px;
   overflow: hidden;
   max-width: 100%;
+  grid-column: 2;
 }
 
 .game-image {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .game-image img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0;
+  border-radius: 12px;
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .game-info {
-  background: #211F30;
+  background: transparent;
   border-radius: 16px;
   padding: 25px;
   display: flex;
@@ -144,26 +150,75 @@
   color: #ff9800;
 }
 
-/* Responsive game details */
 @media (max-width: 1024px) {
   .details-container {
     grid-template-columns: 1fr;
     gap: 20px;
   }
   
+  .video-section {
+    grid-column: 1;
+  }
+  
   .info-section {
-    grid-template-columns: 1fr;
+    grid-column: 1;
   }
 }
 
 @media (max-width: 768px) {
+  .game-details {
+    padding: 15px;
+  }
+  
+  .details-container {
+    gap: 15px;
+  }
+  
+  .video-section {
+    padding: 20px;
+  }
+  
+  .video-section h1 {
+    font-size: 2rem;
+  }
+  
+  .info-section {
+    padding: 20px;
+  }
+  
   .price-section {
     flex-direction: column;
     gap: 15px;
     text-align: center;
   }
   
+  .game-image img {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-details {
+    padding: 10px;
+  }
+  
+  .video-section {
+    padding: 15px;
+  }
+  
   .video-section h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .info-section {
+    padding: 15px;
+  }
+  
+  .game-info {
+    padding: 15px;
+  }
+  
+  .game-image img {
+    max-height: 200px;
   }
 }
