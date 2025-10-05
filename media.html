@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Updates</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">GameStore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container my-5">
+
+  <!-- Responsive Typography -->
+  <section class="mb-5">
+    <h1 class="display-1">Latest Game Updates</h1>
+    <p class="lead">Stay up-to-date with the newest releases and patches for your favorite games.</p>
+  </section>
+
+  <!-- Grid Layout 2 Columns -->
+  <section class="row mb-5">
+    <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+      <div class="p-3 bg-light rounded shadow">Update 1: New features added!</div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+      <div class="p-3 bg-light rounded shadow">Update 2: Bug fixes implemented!</div>
+    </div>
+  </section>
+
+  <!-- Bootstrap Carousel -->
+  <section class="mb-5">
+    <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="5"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="6"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="7"></button>
+        <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="8"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active"><img src="images/cs2.jpg" class="d-block w-100" alt="Game 1"></div>
+        <div class="carousel-item"><img src="images/assasins.jpg" class="d-block w-100" alt="Game 2"></div>
+        <div class="carousel-item"><img src="images/detroit.jpg" class="d-block w-100" alt="Game 3"></div>
+        <div class="carousel-item"><img src="images/farcry3.jpg" class="d-block w-100" alt="Game 4"></div>
+        <div class="carousel-item"><img src="images/wwz.jpg" class="d-block w-100" alt="Game 5"></div>
+        <div class="carousel-item"><img src="images/mk1.jpg" class="d-block w-100" alt="Game 6"></div>
+        <div class="carousel-item"><img src="images/RDR2.jpg" class="d-block w-100" alt="Game 7"></div>
+        <div class="carousel-item"><img src="images/thelast.jpg" class="d-block w-100" alt="Game 8"></div>
+        <div class="carousel-item"><img src="images/witcher.jpg" class="d-block w-100" alt="Game 9"></div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Grid Layout 3 Columns Cards -->
+  <section class="row mb-5">
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+      <div class="card h-100">
+        <img src="images/farcry3.jpg" class="card-img-top" alt="Card 1">
+        <div class="card-body">
+          <h5 class="card-title">Update Alpha</h5>
+          <p class="card-text">Exciting new missions and rewards await players!</p>
+          <button class="btn btn-primary btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+      <div class="card h-100">
+        <img src="images/wwz.jpg" class="card-img-top" alt="Card 2">
+        <div class="card-body">
+          <h5 class="card-title">Update Beta</h5>
+          <p class="card-text">Bug fixes and performance improvements applied.</p>
+          <button class="btn btn-secondary btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+      <div class="card h-100">
+        <img src="images/mk1.jpg" class="card-img-top" alt="Card 3">
+        <div class="card-body">
+          <h5 class="card-title">Update Gamma</h5>
+          <p class="card-text">New characters and levels available now!</p>
+          <button class="btn btn-outline-primary btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buttons Group -->
+  <section class="mb-5">
+    <div class="btn-group" role="group">
+      <button class="btn btn-primary">Patch Notes</button>
+      <button class="btn btn-secondary">Previews</button>
+      <button class="btn btn-success">Events</button>
+    </div>
+  </section>
+
+  <!-- Responsive Form -->
+  <section class="mb-5">
+    <form>
+      <div class="mb-3">
+        <label for="email" class="form-label">Subscribe to Updates</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="agree">
+        <label class="form-check-label" for="agree">I agree to receive emails</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="bg-dark text-light text-center py-3">
+  Team GameMasters: Eraly, Zhanna, Aliya
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
