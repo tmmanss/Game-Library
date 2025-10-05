@@ -305,6 +305,63 @@ footer {
   margin-top: auto;
 }
 
+@media (min-width: 993px) {
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2.2rem; }
+  h3 { font-size: 1.8rem; }
+  p { font-size: 1.1rem; }
+  .lead { font-size: 1.3rem; }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.5rem; }
+  p { font-size: 1rem; }
+  .lead { font-size: 1.1rem; }
+}
+
+@media (max-width: 767px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  p { font-size: 0.9rem; }
+  .lead { font-size: 1rem; }
+}
+
+.custom-card-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.custom-card {
+  background: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1;
+  min-width: 250px;
+}
+
+@media (min-width: 993px) {
+  .custom-card {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  .custom-card {
+    flex: 0 0 calc(50% - 0.5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .custom-card {
+    flex: 0 0 100%;
+  }
+}
+
 @media (max-width: 768px) {
   header {
     flex-direction: column;
