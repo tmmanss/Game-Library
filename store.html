@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/store.css">
-
+  <script src="js/app.js" defer></script>
 </head>
 <body class="grid-layout">
   <header class="grid-header">
@@ -27,6 +27,11 @@
         <li><a href="media.html">Bootstrap</a></li>
       </ul>
     </nav>
+    <div class="util-bar" style="display:flex;gap:.5rem;align-items:center;margin-left:1rem;">
+      <span id="clock" class="clock" aria-live="polite"></span>
+      <button id="bgBtn" class="btn-mini" type="button" title="Change background">BG</button>
+      <button id="openPopup" class="btn-mini" type="button" title="Subscribe">Subscribe</button>
+    </div>
   </header>
 
   <main class="grid-main">
@@ -105,5 +110,21 @@
     <p>Group: SE-2409</p>
     <p>Mansur Tasbolat & Eraly Zalel</p>
   </footer>
+    <div id="modalOverlay" class="overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="close" id="closePopup" aria-label="Close">×</button>
+      <h3 id="modal-title">Subscribe to newsletter</h3>
+      <form id="popupForm" data-validate novalidate>
+        <div class="field">
+          <label for="subEmail">Email *</label>
+          <input id="subEmail" name="subEmail" type="email" required />
+          <small class="error" data-for="subEmail"></small>
+        </div>
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/app.js" defer></script>
 </body>
 </html>
