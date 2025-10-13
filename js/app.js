@@ -9,11 +9,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const palette = ["#1e1f29", "#2c2f48", "#211F30", "#32384D", "#2c3142", "#1b1c27"];
   let bgIdx = 0;
+  let originalBackground = '';
+  let originalBackgroundSize = '';
+  let originalAnimation = '';
+  
+  const storeOriginalStyles = () => {
+    originalBackground = document.body.style.background || getComputedStyle(document.body).background;
+    originalBackgroundSize = document.body.style.backgroundSize || getComputedStyle(document.body).backgroundSize;
+    originalAnimation = document.body.style.animation || getComputedStyle(document.body).animation;
+  };
+  
+  const resetBackground = () => {
+    document.documentElement.style.removeProperty('background');
+    document.body.style.removeProperty('background');
+    document.body.style.removeProperty('background-size');
+    document.body.style.removeProperty('animation');
+  };
+  
   const bgBtn = document.getElementById("bgBtn");
   if (bgBtn) {
+    storeOriginalStyles();
+    
     bgBtn.addEventListener("click", () => {
       bgIdx = (bgIdx + 1) % palette.length;
-      document.documentElement.style.background = palette[bgIdx];
+      
+      if (bgIdx === 0) {
+        resetBackground();
+        return;
+      }
+      
+      document.documentElement.style.setProperty('background', palette[bgIdx], 'important');
+      document.body.style.setProperty('background', palette[bgIdx], 'important');
+      document.body.style.setProperty('background-size', 'auto', 'important');
+      document.body.style.setProperty('animation', 'none', 'important');
     });
   }
 
@@ -46,25 +74,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape" && overlay && !overlay.hidden) closeModal();
   });
 
-  document.querySelectorAll(".accordion-header").forEach((btn) => {
-    const panelId = btn.getAttribute("aria-controls");
-    const panel = panelId ? document.getElementById(panelId) : null;
-    if (!panel) return;
-    btn.addEventListener("click", () => {
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!isOpen));
-      if (!isOpen) {
-        panel.classList.add("open");
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        requestAnimationFrame(() => {
-          panel.classList.remove("open");
-          panel.style.maxHeight = "0";
-        });
-      }
-    });
+document.querySelectorAll(".accordion-header").forEach((btn) => {
+  const panelId = btn.getAttribute("aria-controls");
+  const panel = panelId ? document.getElementById(panelId) : null;
+  if (!panel) return;
+
+  btn.addEventListener("click", () => {
+    const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+    btn.setAttribute("aria-expanded", String(!isOpen));
+
+    if (!isOpen) {
+      panel.classList.add("open");
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } else {
+      panel.style.maxHeight = "0";
+      panel.classList.remove("open");
+    }
   });
+});
 
   const emailRE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   function setError(name, msg, scope) {
