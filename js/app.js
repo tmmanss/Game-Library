@@ -7,41 +7,57 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(tick, 1000);
   }
 
-  const palette = ["#1e1f29", "#2c2f48", "#211F30", "#32384D", "#2c3142", "#1b1c27"];
+  const palette = ["#13c219", "#505cc2", "#c52820", "#4d3240", "#d95454", "#b1b73a"];
   let bgIdx = 0;
-  let originalBackground = '';
-  let originalBackgroundSize = '';
-  let originalAnimation = '';
-  
+  let originalBackground = "";
+  let originalBackgroundSize = "";
+  let originalAnimation = "";
+
   const storeOriginalStyles = () => {
     originalBackground = document.body.style.background || getComputedStyle(document.body).background;
     originalBackgroundSize = document.body.style.backgroundSize || getComputedStyle(document.body).backgroundSize;
     originalAnimation = document.body.style.animation || getComputedStyle(document.body).animation;
   };
-  
+
   const resetBackground = () => {
-    document.documentElement.style.removeProperty('background');
-    document.body.style.removeProperty('background');
-    document.body.style.removeProperty('background-size');
-    document.body.style.removeProperty('animation');
+    document.documentElement.style.removeProperty("background");
+    document.body.style.removeProperty("background");
+    document.body.style.removeProperty("background-size");
+    document.body.style.removeProperty("animation");
+    document.documentElement.style.removeProperty("--primary-color");
+    document.documentElement.style.removeProperty("--secondary-color");
+    document.documentElement.style.removeProperty("--gradient-bg");
   };
-  
+
+  const lighten = (hex, p = 0.08) => {
+    const n = hex.replace("#", "");
+    const num = parseInt(n, 16);
+    const r = Math.min(255, ((num >> 16) & 255) + Math.round(255 * p));
+    const g = Math.min(255, ((num >> 8) & 255) + Math.round(255 * p));
+    const b = Math.min(255, (num & 255) + Math.round(255 * p));
+    return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, "0")}`;
+  };
+
   const bgBtn = document.getElementById("bgBtn");
   if (bgBtn) {
     storeOriginalStyles();
-    
     bgBtn.addEventListener("click", () => {
-      bgIdx = (bgIdx + 1) % palette.length;
-      
+      bgIdx = (bgIdx + 1) % (palette.length + 1);
       if (bgIdx === 0) {
         resetBackground();
         return;
       }
-      
-      document.documentElement.style.setProperty('background', palette[bgIdx], 'important');
-      document.body.style.setProperty('background', palette[bgIdx], 'important');
-      document.body.style.setProperty('background-size', 'auto', 'important');
-      document.body.style.setProperty('animation', 'none', 'important');
+      const color = palette[bgIdx - 1];
+      const secondary = lighten(color, 0.06);
+
+      document.documentElement.style.setProperty("background", color, "important");
+      document.body.style.setProperty("background", color, "important");
+      document.body.style.setProperty("background-size", "auto", "important");
+      document.body.style.setProperty("animation", "none", "important");
+
+      document.documentElement.style.setProperty("--primary-color", color);
+      document.documentElement.style.setProperty("--secondary-color", secondary);
+      document.documentElement.style.setProperty("--gradient-bg", color);
     });
   }
 
@@ -74,25 +90,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape" && overlay && !overlay.hidden) closeModal();
   });
 
-document.querySelectorAll(".accordion-header").forEach((btn) => {
-  const panelId = btn.getAttribute("aria-controls");
-  const panel = panelId ? document.getElementById(panelId) : null;
-  if (!panel) return;
-
-  btn.addEventListener("click", () => {
-    const isOpen = btn.getAttribute("aria-expanded") === "true";
-
-    btn.setAttribute("aria-expanded", String(!isOpen));
-
-    if (!isOpen) {
-      panel.classList.add("open");
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } else {
-      panel.style.maxHeight = "0";
-      panel.classList.remove("open");
-    }
+  document.querySelectorAll(".accordion-header").forEach((btn) => {
+    const panelId = btn.getAttribute("aria-controls");
+    const panel = panelId ? document.getElementById(panelId) : null;
+    if (!panel) return;
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      if (!isOpen) {
+        panel.classList.add("open");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      } else {
+        panel.style.maxHeight = "0";
+        panel.classList.remove("open");
+      }
+    });
   });
-});
 
   const emailRE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   function setError(name, msg, scope) {
