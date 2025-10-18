@@ -24,13 +24,24 @@
         <li><a href="about.html" class="active">About</a></li>
         <li><a href="library.html">My Library</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="media.html">Bootstrap</a></li>
+        <li><a href="media.html">Bootstrap</a></li> 
       </ul>
     </nav>
     <div class="util-bar" style="display:flex;gap:.5rem;align-items:center;margin-left:1rem;">
       <span id="clock" class="clock" aria-live="polite"></span>
       <button id="bgBtn" class="btn-mini" type="button" title="Change background">BG</button>
       <button id="openPopup" class="btn-mini" type="button" title="Subscribe">Subscribe</button>
+      <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">Theme</button>
+      <button id="showTimeBtn" class="btn-mini" type="button" title="Show time">Time</button>
+        <span id="timeBox" class="time-box" aria-live="polite"></span>
+    </div>
+    <div class="lang-switch">
+      <label for="langSelect">Language:</label>
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="kk">Қазақша</option>
+        <option value="ru">Русский</option>
+      </select>
     </div>
   </header>
 
@@ -142,6 +153,32 @@
         </div>
       </div>
     </section>
+    <section id="contact-form" class="content-section">
+    <h2>Contact Us (async)</h2>
+    <form id="contactForm" data-validate novalidate>
+      <div class="field">
+        <label for="cName">Name *</label>
+        <input id="cName" name="cName" required minlength="2">
+        <small class="error" data-for="cName"></small>
+      </div>
+      <div class="field">
+        <label for="cEmail">Email *</label>
+        <input id="cEmail" name="cEmail" type="email" required>
+        <small class="error" data-for="cEmail"></small>
+      </div>
+      <div class="field">
+        <label for="cMsg">Message *</label>
+        <textarea id="cMsg" name="cMsg" required minlength="5"></textarea>
+        <small class="error" data-for="cMsg"></small>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn primary">Send</button>
+        <button id="resetContact" type="button" class="btn">Reset</button>
+      </div>
+      <p id="contactStatus" class="status" aria-live="polite"></p>
+    </form>
+  </section>
+
   <section id="faq" class="content-section">
     <h2>FAQ</h2>
     <div class="accordion" role="tablist">
@@ -187,6 +224,8 @@
       </form>
     </div>
   </div>
-
+  <audio id="clickSound" preload="auto">
+    <source src="images/sounds/minecraft_click.mp3" type="audio/mpeg">
+  </audio>
 </body>
 </html>
