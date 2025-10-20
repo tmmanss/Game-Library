@@ -32,6 +32,17 @@
       <span id="clock" class="clock" aria-live="polite"></span>
       <button id="bgBtn" class="btn-mini" type="button" title="Change background">BG</button>
       <button id="openPopup" class="btn-mini" type="button" title="Subscribe">Subscribe</button>
+      <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">Theme</button>
+      <button id="showTimeBtn" class="btn-mini" type="button" title="Show time">Time</button>
+      <span id="timeBox" class="time-box" aria-live="polite"></span>
+    </div>
+    <div class="lang-switch">
+      <label for="langSelect">Language:</label>
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="kk">Қазақша</option>
+        <option value="ru">Русский</option>
+      </select>
     </div>
   </header>
 
@@ -65,6 +76,27 @@
         </div>
       </div>
     </section>
+  <section id="interact" class="custom-section">
+    <h2>Rate Nitro 5</h2>
+    <div id="stars" class="stars" role="radiogroup" aria-label="Rate">
+      <button class="star" data-value="1" aria-checked="false" role="radio">★</button>
+      <button class="star" data-value="2" aria-checked="false" role="radio">★</button>
+      <button class="star" data-value="3" aria-checked="false" role="radio">★</button>
+      <button class="star" data-value="4" aria-checked="false" role="radio">★</button>
+      <button class="star" data-value="5" aria-checked="false" role="radio">★</button>
+    </div>
+    <p id="rateMsg">Click a star to rate.</p>
+
+    <h3 class="mt">Read more</h3>
+    <p id="aboutShort">
+      Nitro 5 — современная платформа для геймеров.
+      <span id="aboutMore" hidden> Мы добавляем каталог, библиотеку, новости и социальные функции.</span>
+    </p>
+    <button id="readMoreBtn" class="btn-mini" type="button">Read more</button>
+    <div class="mt">
+      <button id="loadMoreBtn" class="btn" type="button">Load more games</button>
+    </div>
+  </section>
 
     <section id="news-section" class="news">
       <h2>Latest News</h2>
