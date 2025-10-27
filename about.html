@@ -10,8 +10,15 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/about.css">
   <script src="js/app.js" defer></script>
+  <!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- jQuery logic file -->
+<script src="js/jquery_app.js" defer></script>
+
 </head>
 <body class="grid-layout with-sidebar">
+  <div id="scrollBar"></div>
   <header class="grid-header">
     <div class="logo">
       <img src="images/game_512.png" alt="icon" width="64" class="circular-logo">
@@ -60,11 +67,13 @@
       <h3>Team Gallery</h3>
       <div class="gallery-grid">
         <div class="gallery-item">
+          <img class="lazy" data-src="images/yeraly.jpg" alt="Yeraly">
           <img src="images/mansur.jfif" alt="Team Member 1" class="gallery-img">
           <div class="gallery-caption">Mansur</div>
         </div>
         <div class="gallery-item">
           <img src="images/yeraly.jpg" alt="Team Member 2" class="gallery-img">
+          <img class="lazy" data-src="images/yeraly.jpg" alt="Yeraly">
           <div class="gallery-caption">Eraly</div>
         </div>
       </div>
@@ -127,7 +136,10 @@
         <p>We believe that gaming should be accessible, enjoyable, and social. Our platform reflects these values through every feature we develop.</p>
       </div>
     </section>
-
+  <div id="stats">
+    <div class="stat"><span class="num" data-val="500">0</span> Users</div>
+    <div class="stat"><span class="num" data-val="1200">0</span> Downloads</div>
+  </div>
     <section id="contact" class="content-section">
       <h2>Contact Information</h2>
       <div class="content-card">
@@ -178,7 +190,18 @@
       <p id="contactStatus" class="status" aria-live="polite"></p>
     </form>
   </section>
-
+  <div id="searchSection" class="content-section">
+    <h2>Search Games</h2>
+    <input type="text" id="searchInput" placeholder="Search for a game..." class="search-box">
+    <ul id="suggestions"></ul>
+    <ul id="gameList">
+      <li>Valorant</li>
+      <li>Cyberpunk 2077</li>
+      <li>GTA VI</li>
+      <li>Elden Ring</li>
+      <li>Minecraft</li>
+    </ul>
+  </div>
   <section id="faq" class="content-section">
     <h2>FAQ</h2>
     <div class="accordion" role="tablist">
@@ -205,7 +228,10 @@
     </div>
   </section>
   </main>
-
+  <div class="copy-area">
+    <p id="copyText">Welcome to Nitro 5 Game Library!</p>
+    <button id="copyBtn">Copy</button>
+  </div>
   <footer class="grid-footer">
     <p>&copy; 2024 Nitro 5 Gaming Platform</p>
     <p>Group: SE-2409 | Team: Mansur Tasbolat & Eraly Zalel</p>
