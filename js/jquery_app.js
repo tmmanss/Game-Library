@@ -10,7 +10,35 @@ $(document).ready(function() {
   });
 
   // ==== Task 2 — Autocomplete Suggestions ====
-  const games = ["Valorant", "Cyberpunk 2077", "GTA VI", "Elden Ring", "Minecraft", "Dota 2"];
+const games = [
+  "Counter-Strike 2",
+  "Detroit: Become Human",
+  "Red Dead Redemption 2",
+  "The Last of Us",
+  "World War Z",
+  "Mortal Kombat 1",
+  "Valorant",
+  "Cyberpunk 2077",
+  "GTA VI",
+  "Elden Ring",
+  "Minecraft",
+  "Dota 2",
+  "Assassin's Creed Mirage",
+  "Call of Duty: Modern Warfare 3",
+  "Fortnite",
+  "PUBG: Battlegrounds",
+  "Overwatch 2",
+  "Apex Legends",
+  "Battlefield 2042",
+  "Hogwarts Legacy",
+  "Spider-Man 2",
+  "God of War Ragnarok",
+  "Baldur’s Gate 3",
+  "Ghost of Tsushima",
+  "Resident Evil 4 Remake",
+  "Starfield",
+  "Alan Wake 2"
+];
   $("#searchInput").on("input", function() {
     let input = $(this).val().toLowerCase();
     $("#suggestions").empty();
