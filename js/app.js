@@ -51,16 +51,19 @@ document.addEventListener("DOMContentLoaded", () => {
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       const body = document.body;
-      const isDark = body.classList.contains("light-theme");
+      const isDark = body.classList.contains("dark-theme");
+      const isLight = body.classList.contains("light-theme");
       
-      if (isDark) {
-        body.classList.remove("light-theme");
-        body.classList.add("dark-theme");
-        themeToggle.textContent = "Light";
-      } else {
+      if (isDark || (!isDark && !isLight)) {
+        // Switch to light theme
         body.classList.remove("dark-theme");
         body.classList.add("light-theme");
         themeToggle.textContent = "Dark";
+      } else {
+        // Switch to dark theme
+        body.classList.remove("light-theme");
+        body.classList.add("dark-theme");
+        themeToggle.textContent = "Light";
       }
     });
   }
