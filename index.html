@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/index.css">
   <script src="js/app.js" defer></script>
 
+<script src="js/i18n.js" defer></script>
+<script src="js/enhancements.js" defer></script>
 </head>
 <body class="grid-layout">
   <header class="grid-header">
@@ -25,7 +27,15 @@
         <li><a href="library.html">My Library</a></li>
         <li><a href="gallery.html">Gallery</a></li>
       </ul>
-    </nav>
+    <div class="lang-select ms-auto" style="display:flex;align-items:center;gap:.5rem;margin-left:auto;">
+  <label for="langSelect" class="form-label" style="margin:0;"><span data-i18n="ui.language">Language:</span></label>
+  <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
+    <option value="en">English</option>
+    <option value="ru">Русский</option>
+    <option value="kk">Қазақша</option>
+  </select>
+</div>
+</nav>
     <div class="util-bar">
       <span id="clock" class="clock" aria-live="polite"></span>
       <button id="bgBtn" class="btn-mini" type="button" title="Change background">BG</button>
@@ -34,15 +44,7 @@
       <button id="showTimeBtn" class="btn-mini" type="button" title="Show time">Time</button>
       <span id="timeBox" class="time-box" aria-live="polite"></span>
     </div>
-    <div class="lang-switch">
-      <label for="langSelect">Language:</label>
-      <select id="langSelect">
-        <option value="en">English</option>
-        <option value="kk">Қазақша</option>
-        <option value="ru">Русский</option>
-      </select>
-    </div>
-  </header>
+    </header>
 
   <main class="grid-main">
     <section id="top-games" class="top-games">
@@ -122,13 +124,29 @@
         <span>- Anna K.</span>
       </div>
     </section>
-  </main>
+  <section id="media" class="section">
+  <div class="container">
+    <h2 class="section-title">Media</h2>
+    <div class="snap-gallery" id="mediaGallery">
+      <button class="snap-btn prev" aria-label="Previous" type="button">‹</button>
+      <div class="snap-track" tabindex="0" aria-live="polite">
+        <figure class="snap-item"><img src="images/cs2.jpg" alt="CS2"></figure>
+        <figure class="snap-item"><img src="images/assasins.jpg" alt="Assassin's Creed"></figure>
+        <figure class="snap-item"><img src="images/detroit.jpg" alt="Detroit: Become Human"></figure>
+        <figure class="snap-item"><img src="images/farcry3.jpg" alt="Far Cry 3"></figure>
+        <figure class="snap-item"><img src="images/wwz.jpg" alt="World War Z"></figure>
+        <figure class="snap-item"><img src="images/mk1.jpg" alt="Mortal Kombat 1"></figure>
+        <figure class="snap-item"><img src="images/RDR2.jpg" alt="RDR2"></figure>
+        <figure class="snap-item"><img src="images/thelast.jpg" alt="The Last of Us"></figure>
+        <figure class="snap-item"><img src="images/spider.jpg" alt="Spider-Man"></figure>
+      </div>
+      <button class="snap-btn next" aria-label="Next" type="button">›</button>
+    </div>
+  </div>
+</section>
+</main>
 
-  <footer class="grid-footer">
-    <p>&copy; 2024 Nitro 5 Gaming Platform</p>
-    <p>Group: SE-2409</p>
-    <p>Mansur Tasbolat & Eraly Zalel</p>
-  </footer>
+  
     <div id="modalOverlay" class="overlay" hidden>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <button class="close" id="closePopup" aria-label="Close">×</button>
@@ -149,5 +167,10 @@
     <source src="images/sounds/minecraft_click.mp3" type="audio/mpeg">
   </audio>
 
+<footer class="grid-footer">
+    <p>&copy; 2024 Nitro 5 Gaming Platform</p>
+    <p>Group: SE-2409</p>
+    <p>Mansur Tasbolat & Eraly Zalel</p>
+  </footer>
 </body>
 </html>

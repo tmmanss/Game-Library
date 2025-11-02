@@ -19,7 +19,10 @@
     <script src="js/jquery_app.js" defer></script>
 
     <script src="js/app.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="css/style.css">
+<script src="js/i18n.js" defer></script>
+<script src="js/enhancements.js" defer></script>
+</head>
   <body class="grid-layout">
     <header class="grid-header">
       <div class="logo">
@@ -39,7 +42,15 @@
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="media.html">Bootstrap</a></li>
         </ul>
-      </nav>
+      <div class="lang-select ms-auto" style="display:flex;align-items:center;gap:.5rem;margin-left:auto;">
+  <label for="langSelect" class="form-label" style="margin:0;"><span data-i18n="ui.language">Language:</span></label>
+  <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
+    <option value="en">English</option>
+    <option value="ru">Русский</option>
+    <option value="kk">Қазақша</option>
+  </select>
+</div>
+</nav>
       <div class="util-bar">
         <span id="clock" class="clock" aria-live="polite"></span>
         <button
@@ -71,15 +82,7 @@
         </button>
         <span id="timeBox" class="time-box" aria-live="polite"></span>
       </div>
-      <div class="lang-switch">
-        <label for="langSelect">Language:</label>
-        <select id="langSelect">
-          <option value="en">English</option>
-          <option value="kk">Қазақша</option>
-          <option value="ru">Русский</option>
-        </select>
-      </div>
-    </header>
+      </header>
 
     <main class="grid-main">
       <section id="store-section" class="store">
@@ -210,11 +213,7 @@
       </section>
     </main>
 
-    <footer class="grid-footer">
-      <p>&copy; 2024 Nitro 5 Gaming Platform</p>
-      <p>Group: SE-2409</p>
-      <p>Mansur Tasbolat & Eraly Zalel</p>
-    </footer>
+    
 
     <div id="modalOverlay" class="overlay" hidden>
       <div
@@ -239,5 +238,10 @@
     <audio id="clickSound" preload="auto">
       <source src="images/sounds/minecraft_click.mp3" type="audio/mpeg" />
     </audio>
-  </body>
+  <footer class="grid-footer">
+      <p>&copy; 2024 Nitro 5 Gaming Platform</p>
+      <p>Group: SE-2409</p>
+      <p>Mansur Tasbolat & Eraly Zalel</p>
+    </footer>
+</body>
 </html>

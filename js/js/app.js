@@ -532,3 +532,29 @@ document.addEventListener("DOMContentLoaded", () => {
   
   window.gameLibrary = gameLibrary;
 });
+
+
+/* Enforce buttons-only scrolling for gallery */
+(function(){
+  const root = document.getElementById('mediaGallery');
+  if (!root) return;
+  const track = root.querySelector('.snap-track');
+  const prev  = root.querySelector('.prev');
+  const next  = root.querySelector('.next');
+  const items = Array.from(root.querySelectorAll('.snap-item'));
+  const step  = () => items[0]?.getBoundingClientRect().width || track.clientWidth;
+  function by(dir){ track.scrollBy({ left: dir * step(), behavior: 'smooth' }); }
+
+  // Disable wheel & native touch drag on the track
+  track.addEventListener('wheel', (e)=>{ e.preventDefault(); }, {passive:false});
+  let startX = 0;
+  track.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchmove', (e)=>{ e.preventDefault(); }, {passive:false});
+  track.addEventListener('touchend', (e)=>{
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) by(dx < 0 ? +1 : -1);
+  }, {passive:true});
+
+  prev?.addEventListener('click', ()=>by(-1));
+  next?.addEventListener('click', ()=>by(+1));
+})();
