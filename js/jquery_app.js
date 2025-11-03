@@ -1,13 +1,60 @@
 $(document).ready(function() {
   console.log("✅ jQuery is ready!");
 
-  // ==== Task 1 — Real-time Search / Filter ====
-  $("#searchInput").on("keyup", function() {
-    let value = $(this).val().toLowerCase();
-    $("#gameList li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().includes(value));
+/* ==== Task 1 — Store Search: highlight + filter ==== */
+(function setupStoreSearchHighlight() {
+  // работаем только на страницах, где есть карточки игр
+  if (!$('.game-grid .game-card').length) return;
+
+  const $input = $('#searchInput');
+
+  function escRe(s) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlightCard($card, q) {
+    // элементы, где подсвечиваем: заголовок (внутри <a>) и описание .desc
+    const $title = $card.find('h3 a').length ? $card.find('h3 a') : $card.find('h3');
+    const $desc  = $card.find('.desc');
+    const fields = [$title, $desc];
+    let matched = false;
+
+    fields.forEach($el => {
+      if (!$el.length) return;
+      const original = $el.data('orig') ?? $el.html();        // сохраняем исходное содержимое
+      if ($el.data('orig') == null) $el.data('orig', original);
+
+      if (!q) { // пустой запрос — снимаем подсветку
+        $el.html(original);
+        return;
+      }
+
+      const rx = new RegExp('(' + escRe(q) + ')', 'gi');
+      matched = matched || rx.test(original);
+      const html = original.replace(rx, '<mark class="hl">$1</mark>');
+      $el.html(html);
+    });
+
+    return matched;
+  }
+
+  // ввод в поиске: подсветка + (опционально) фильтрация карточек
+  $input.on('input', function () {
+    const q = $(this).val().trim();
+    $('.game-grid .game-card').each(function () {
+      const $card = $(this);
+      const ok = highlightCard($card, q);
+      // если хочешь только подсветку — оставь строку ниже закомментированной
+      if (q) $card.toggle(ok); else $card.show();
     });
   });
+
+  // клик по подсказке — вставить текст и применить подсветку
+  $(document).on('click', '.suggest-item', function () {
+    $input.val($(this).text()).trigger('input');
+  });
+})();
+
 
   // ==== Task 2 — Autocomplete Suggestions ====
 const games = [
@@ -134,16 +181,51 @@ const games = [
   });
 
 
-  // ==== Task 9 — Lazy Image Loading ====
-  $(window).on("scroll", function() {
-    $(".lazy").each(function() {
-      let top = $(this).offset().top;
-      let winTop = $(window).scrollTop();
-      let winHeight = $(window).height();
-      if (top < winTop + winHeight) {
-        let src = $(this).attr("data-src");
-        $(this).attr("src", src).removeClass("lazy");
-      }
-    });
-  });
+/* ==== Task 9 — Lazy Image Loading (fade-in + once) ==== */
+(function setupLazy() {
+  const $lazy = $('.lazy');
+  if (!$lazy.length) return;
+
+  const onLoad = (img) => {
+    $(img).addClass('loaded').removeClass('lazy');
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        const $img = $(img);
+        const src = $img.attr('data-src');
+        if (src) {
+          $img.attr('src', src)
+              .one('load', () => onLoad(img))
+              .removeAttr('data-src');
+        }
+        obs.unobserve(img);
+      });
+    }, { rootMargin: '120px' });
+    $lazy.each((_, img) => io.observe(img));
+  } else {
+    const check = () => {
+      const winTop = $(window).scrollTop();
+      const winH  = $(window).height();
+      $('.lazy').each(function () {
+        const $img = $(this);
+        if ($img.offset().top < winTop + winH + 120) {
+          const src = $img.attr('data-src');
+          if (src) {
+            $img.attr('src', src)
+                .one('load', () => onLoad(this))
+                .removeAttr('data-src');
+          }
+        }
+      });
+      if (!$('.lazy[data-src]').length) $(window).off('scroll.lazy resize.lazy');
+    };
+    $(window).on('scroll.lazy resize.lazy', check);
+    check();
+  }
+})();
+
 });
