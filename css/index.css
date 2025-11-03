@@ -101,3 +101,66 @@
   color: #ff9800;
   font-weight: 600;
 }
+
+/* Featured carousel image sizing and captions */
+#media .snap-item {
+  position: relative;
+}
+#media .snap-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+#media .snap-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 600;
+}
+#media .snap-caption .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-actions .sign-in-btn {
+  border: 1px solid #393959;
+  background: #211F30;
+}
+
+.tools-section {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.tools-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+}
+.tools-row .tools-gap { flex: 1; }
+
+/* Right-aligned nav action cluster */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 993px){
+  .nav-actions{ flex-wrap: nowrap; }
+}

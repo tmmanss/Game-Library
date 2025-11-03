@@ -24,65 +24,32 @@
 <script src="js/enhancements.js" defer></script>
 </head>
   <body class="grid-layout">
-    <header class="grid-header">
-      <div class="logo">
-        <img
-          src="images/game_512.png"
-          alt="icon"
-          width="64"
-          class="circular-logo"
-        />
+  <header class="grid-header">
+    <div class="logo">
+      <img src="images/game_512.png" alt="icon" width="64" class="circular-logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="store.html" class="active">Store</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="library.html">My Library</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-select">
+          <label for="langSelect" class="form-label" style="margin:0;"><span data-i18n="ui.language">Language:</span></label>
+          <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="kk">Қазақша</option>
+          </select>
+        </div>
+        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">Theme</button>
+        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in">Sign in</button>
       </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="store.html" class="active">Store</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="library.html">My Library</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="media.html">Bootstrap</a></li>
-        </ul>
-      <div class="lang-select ms-auto" style="display:flex;align-items:center;gap:.5rem;margin-left:auto;">
-  <label for="langSelect" class="form-label" style="margin:0;"><span data-i18n="ui.language">Language:</span></label>
-  <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
-    <option value="en">English</option>
-    <option value="ru">Русский</option>
-    <option value="kk">Қазақша</option>
-  </select>
-</div>
-</nav>
-      <div class="util-bar">
-        <span id="clock" class="clock" aria-live="polite"></span>
-        <button
-          id="bgBtn"
-          class="btn-mini"
-          type="button"
-          title="Change background"
-        >
-          BG
-        </button>
-        <button id="openPopup" class="btn-mini" type="button" title="Subscribe">
-          Subscribe
-        </button>
-        <button
-          id="themeToggle"
-          class="btn-mini"
-          type="button"
-          title="Toggle theme"
-        >
-          Theme
-        </button>
-        <button
-          id="showTimeBtn"
-          class="btn-mini"
-          type="button"
-          title="Show time"
-        >
-          Time
-        </button>
-        <span id="timeBox" class="time-box" aria-live="polite"></span>
-      </div>
-      </header>
+    </nav>
+  </header> 
 
     <main class="grid-main">
       <section id="store-section" class="store">

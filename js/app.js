@@ -541,11 +541,87 @@ document.addEventListener("DOMContentLoaded", () => {
   const track = root.querySelector('.snap-track');
   const prev  = root.querySelector('.prev');
   const next  = root.querySelector('.next');
-  const items = Array.from(root.querySelectorAll('.snap-item'));
-  const step  = () => items[0]?.getBoundingClientRect().width || track.clientWidth;
-  function by(dir){ track.scrollBy({ left: dir * step(), behavior: 'smooth' }); }
+  const realSlides = Array.from(root.querySelectorAll('.snap-item'));
+  if (realSlides.length === 0) return;
 
-  // Disable wheel & native touch drag on the track
+  // Build infinite loop by cloning edges
+  const firstClone = realSlides[0].cloneNode(true);
+  const lastClone  = realSlides[realSlides.length - 1].cloneNode(true);
+  firstClone.setAttribute('data-clone', 'true');
+  lastClone.setAttribute('data-clone', 'true');
+  track.insertBefore(lastClone, realSlides[0]);
+  track.appendChild(firstClone);
+
+  let slides = Array.from(track.querySelectorAll('.snap-item'));
+  let currentIndex = 1; // start at first real slide
+  let animating = false;
+
+  const getGap = () => {
+    const g = getComputedStyle(track).gap || '0px';
+    const n = parseFloat(g) || 0;
+    return isNaN(n) ? 0 : n;
+  };
+  const step = () => (slides[0]?.getBoundingClientRect().width || track.clientWidth) + getGap();
+
+  const setButtonsEnabled = (enabled) => {
+    if (prev) prev.disabled = !enabled;
+    if (next) next.disabled = !enabled;
+  };
+
+  const goTo = (index, smooth = true) => {
+    currentIndex = index;
+    animating = true;
+    setButtonsEnabled(false);
+    track.scrollTo({ left: step() * currentIndex, behavior: smooth ? 'smooth' : 'auto' });
+    // After animation, correct if on clone and re-enable controls
+    window.clearTimeout(goTo._t);
+    goTo._t = window.setTimeout(() => {
+      if (currentIndex === 0) {
+        currentIndex = realSlides.length;
+        track.scrollTo({ left: step() * currentIndex, behavior: 'auto' });
+      } else if (currentIndex === realSlides.length + 1) {
+        currentIndex = 1;
+        track.scrollTo({ left: step() * currentIndex, behavior: 'auto' });
+      }
+      animating = false;
+      setButtonsEnabled(true);
+      updateDots();
+    }, 450);
+  };
+
+  function by(dir){
+    if (animating) return;
+    goTo(currentIndex + dir, true);
+  }
+
+  // Initialize position to first real slide
+  track.scrollTo({ left: step() * currentIndex, behavior: 'auto' });
+
+  // Dots UI
+  const dotsWrap = document.createElement('div');
+  dotsWrap.className = 'snap-dots';
+  dotsWrap.style.cssText = 'position:absolute; left:50%; transform:translateX(-50%); bottom:10px; display:flex; gap:8px; z-index:2;';
+  const dots = realSlides.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Go to slide ${i+1}`);
+    b.style.cssText = 'width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.25);padding:0;cursor:pointer;';
+    b.addEventListener('click', () => goTo(i + 1, true));
+    dotsWrap.appendChild(b);
+    return b;
+  });
+  root.appendChild(dotsWrap);
+
+  const updateDots = () => {
+    const active = ((currentIndex - 1 + realSlides.length) % realSlides.length);
+    dots.forEach((d, i) => {
+      d.style.background = i === active ? 'rgba(255,255,255,.95)' : 'rgba(255,255,255,.25)';
+      d.style.transform = i === active ? 'scale(1.1)' : 'scale(1)';
+    });
+  };
+  updateDots();
+
+  // Disable wheel & native drag, implement swipe
   track.addEventListener('wheel', (e)=>{ e.preventDefault(); }, {passive:false});
   let startX = 0;
   track.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
@@ -555,6 +631,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Math.abs(dx) > 40) by(dx < 0 ? +1 : -1);
   }, {passive:true});
 
+  // Buttons
   prev?.addEventListener('click', ()=>by(-1));
   next?.addEventListener('click', ()=>by(+1));
+
+  // Keyboard accessibility
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); by(+1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); by(-1); }
+  });
+
+  // Recalculate on resize
+  window.addEventListener('resize', () => {
+    // snap to current slide with new dimensions
+    window.clearTimeout(goTo._resizeT);
+    goTo._resizeT = window.setTimeout(() => {
+      track.scrollTo({ left: step() * currentIndex, behavior: 'auto' });
+    }, 100);
+  });
 })();
