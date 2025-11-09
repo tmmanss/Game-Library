@@ -19,32 +19,43 @@
 <script src="../js/enhancements.js" defer></script>
 </head>
 <body class="grid-layout">
-  <header class="grid-header">
-    <div class="logo">
-      <img src="../images/game_512.png" alt="icon" width="64" class="circular-logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../store.html">Store</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../library.html">My Library</a></li>
-        <li><a href="../gallery.html">Gallery</a></li>
-      </ul>
-      <div class="nav-actions">
-        <div class="lang-select">
-          <label for="langSelect" class="form-label" style="margin:0;"><span data-i18n="ui.language">Language:</span></label>
-          <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
-            <option value="en">English</option>
-            <option value="ru">Русский</option>
-            <option value="kk">Қазақша</option>
-          </select>
-        </div>
-        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">Theme</button>
-        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in">Sign in</button>
+<header class="grid-header">
+  <div class="logo">
+    <img src="../images/game_512.png" alt="icon" width="64" class="circular-logo">
+  </div>
+
+  <button class="burger" id="burger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="../store.html" data-i18n="nav.store">Store</a></li>
+      <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="../library.html" data-i18n="nav.library">My Library</a></li>
+      <li><a href="../gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+      <li><a href="../reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+      <li><a href="../ratings.html" data-i18n="nav.ratings">Ratings</a></li>
+      <li><a href="../platform.html" data-i18n="nav.platform">Platform</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="lang-select">
+        <label for="langSelect" class="form-label" style="margin:0;">
+          <span data-i18n="ui.language">Language:</span>
+        </label>
+        <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
+          <option value="en">English</option>
+          <option value="ru">Русский</option>
+          <option value="kk">Қазақша</option>
+        </select>
       </div>
-    </nav>
-  </header> 
+      <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙</button>
+      <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
+    </div>
+  </nav>
+</header>
 
   <main class="grid-main">
     <section class="game-details">

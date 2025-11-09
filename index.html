@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/index.css">
+  <script src="js/app.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/auth.js" defer></script>
   <script src="js/user-actions.js" defer></script>
@@ -52,35 +53,50 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="grid-header">
-    <div class="logo">
+<header class="grid-header">
+  <div class="logo">
+    <a href="index.html">
       <img src="images/game_512.png" alt="icon" width="64" class="circular-logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
-        <li><a href="store.html" data-i18n="nav.store">Store</a></li>
-        <li><a href="about.html" data-i18n="nav.about">About</a></li>
-        <li><a href="library.html" data-i18n="nav.library">My Library</a></li>
-        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
-        <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
-        <li><a href="ratings.html" data-i18n="nav.ratings">Ratings</a></li>
-        <li><a href="platform.html" data-i18n="nav.platform">Platform</a></li>
-      </ul>
-      <div class="nav-actions">
-        <div class="lang-select">
-          <label for="langSelect" class="form-label" style="margin:0;"><span data-i18n="ui.language">Language:</span></label>
-          <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
-            <option value="en">English</option>
-            <option value="ru">Русский</option>
-            <option value="kk">Қазақша</option>
-          </select>
-        </div>
-        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙</button>
-        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
+    </a>
+  </div>
+
+  <!-- Бургер -->
+  <button class="burger" id="burger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+      <li><a href="store.html" data-i18n="nav.store">Store</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="library.html" data-i18n="nav.library">My Library</a></li>
+      <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+      <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+      <li><a href="ratings.html" data-i18n="nav.ratings">Ratings</a></li>
+      <li><a href="platform.html" data-i18n="nav.platform">Platform</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="lang-select">
+        <label for="langSelect" class="form-label" style="margin:0;">
+          <span data-i18n="ui.language">Language:</span>
+        </label>
+        <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
+          <option value="en">English</option>
+          <option value="ru">Русский</option>
+          <option value="kk">Қазақша</option>
+        </select>
       </div>
-    </nav>
-  </header>
+      <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙</button>
+      <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
+    </div>
+  </nav>
+</header>
+
+
 
   <!-- Hero Section -->
   <section class="hero">

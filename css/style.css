@@ -194,6 +194,122 @@ nav a.active {
   margin-left: auto;
   flex-wrap: wrap;
 } 
+/* === Бургер кнопка === */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform var(--transition-normal);
+  position: relative;
+  z-index: 1003; /* чуть выше header, но ниже меню */
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-normal);
+}
+
+/* Анимация открытия */
+.burger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.burger:hover span {
+  background-color: var(--accent-primary);
+}
+
+/* === Навигация для мобильных === */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  header {
+    position: relative;
+    z-index: 1002;
+  }
+
+  nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-secondary);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    box-shadow: var(--shadow-md);
+    border-bottom: 2px solid var(--border-color);
+    transition: all var(--transition-normal);
+    z-index: 2005; /* меню выше всего при открытии */
+  }
+
+  nav.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  nav a {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+}
+
+/* Анимация появления меню */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .burger {
+    position: fixed; /* вместо relative */
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 3000; /* всегда выше навигации */
+  }
+
+  nav {
+    z-index: 2000; /* меню под бургером */
+  }
+}
+
 
 .time-display {
   background: var(--bg-tertiary);

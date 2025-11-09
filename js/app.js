@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  const burger = document.getElementById('burger');
+  const navbar = document.getElementById('navbar');
+  
+  burger.addEventListener('click', function() {
+    burger.classList.toggle('active');
+    navbar.classList.toggle('active');
+    
+    // Блокируем прокрутку тела при открытом меню
+    document.body.style.overflow = navbar.classList.contains('active') ? 'hidden' : '';
+  });
+  
+  // Закрываем меню при клике на ссылку
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      navbar.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
   const clockEl = document.getElementById("clock");
   if (clockEl) {
     const fmt = new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeStyle: "medium" });
