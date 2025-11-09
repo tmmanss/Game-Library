@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="platform.title">Platform Info - Nitro 5 Gaming Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/platform.css">
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/user-actions.js" defer></script>
+  <script src="js/auth-modal.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="grid-header">
+    <div class="logo">
+      <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit;">
+        <img src="images/game_512.png" alt="icon" width="64" class="circular-logo">
+        <span>Nitro 5</span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="store.html" data-i18n="nav.store">Store</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="library.html" data-i18n="nav.library">My Library</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+        <li><a href="ratings.html" data-i18n="nav.ratings">Ratings</a></li>
+        <li><a href="platform.html" class="active" data-i18n="nav.platform">Platform</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-select">
+          <label for="langSelect" class="form-label" style="margin:0;"><span data-i18n="ui.language">Language:</span></label>
+          <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="kk">Қазақша</option>
+          </select>
+        </div>
+        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙 Dark</button>
+        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="platform-main">
+    <!-- Rate Platform Section -->
+    <section class="rate-platform-section">
+      <div class="container">
+        <h1 data-i18n="platform.rateTitle">Rate Nitro 5 Platform</h1>
+        <p class="subtitle" data-i18n="platform.rateSubtitle">Share your experience with our gaming platform</p>
+        
+        <div class="rating-widget">
+          <div class="stars" id="platformStars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+          <p class="rating-instruction" data-i18n="platform.clickStar">Click a star to rate</p>
+          <div id="ratingResult" class="rating-result"></div>
+        </div>
+
+        <div class="platform-info">
+          <h2 data-i18n="platform.aboutTitle">About Nitro 5</h2>
+          <p data-i18n="platform.aboutText">Nitro 5 is a modern gaming platform designed for passionate gamers.</p>
+          <button class="btn-primary" data-i18n="platform.readMore">Read more</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="news-section">
+      <div class="container">
+        <h2 data-i18n="platform.newsTitle">Latest News</h2>
+        
+        <div class="news-grid">
+          <div class="news-card">
+            <h3 data-i18n="platform.news1Title">CS2 Update Released!</h3>
+            <p data-i18n="platform.news1Text">Check out the new maps and skins added in the latest CS2 update.</p>
+            <span class="news-date">November 5, 2025</span>
+          </div>
+
+          <div class="news-card">
+            <h3 data-i18n="platform.news2Title">RDR2 Sale</h3>
+            <p data-i18n="platform.news2Text">Red Dead Redemption 2 is now 30% off for a limited time!</p>
+            <span class="news-date">November 3, 2025</span>
+          </div>
+
+          <div class="news-card">
+            <h3 data-i18n="platform.news3Title">New Features Coming Soon</h3>
+            <p data-i18n="platform.news3Text">Stay tuned for exciting new features including cloud saves and achievements!</p>
+            <span class="news-date">November 1, 2025</span>
+          </div>
+        </div>
+
+        <button class="btn-secondary load-more" data-i18n="platform.loadMore">Load more news</button>
+      </div>
+    </section>
+
+    <!-- User Reviews Section -->
+    <section class="user-reviews-section">
+      <div class="container">
+        <h2 data-i18n="platform.reviewsTitle">User Reviews</h2>
+        
+        <div class="reviews-list">
+          <div class="review-card">
+            <p class="review-text" data-i18n="platform.review1Text">"CS2 is amazing! The graphics are insane!"</p>
+            <div class="review-author">
+              <span class="author-name">- John D.</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <p class="review-text" data-i18n="platform.review2Text">"RDR2 story mode kept me hooked for hours."</p>
+            <div class="review-author">
+              <span class="author-name">- Anna K.</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <p class="review-text" data-i18n="platform.review3Text">"Great platform with an amazing game collection!"</p>
+            <div class="review-author">
+              <span class="author-name">- Mike S.</span>
+              <div class="review-stars">★★★★☆</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-secondary" data-i18n="platform.loadMoreGames">Load more games</button>
+          <button class="btn-secondary" id="randomQuoteBtn" data-i18n="platform.getQuote">Get Random Quote</button>
+        </div>
+
+        <div id="randomQuote" class="random-quote"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="grid-footer">
+    <p>&copy; 2024 Nitro 5 Gaming Platform | SE-2409 | Mansur Tasbolat & Eraly Zalel</p>
+    <p class="footer-time" id="footerTime">00:00:00</p>
+  </footer>
+
+  <script>
+    // Platform Rating System
+    document.addEventListener('DOMContentLoaded', () => {
+      const stars = document.querySelectorAll('#platformStars .star');
+      const ratingResult = document.getElementById('ratingResult');
+      let currentRating = 0;
+
+      // Load saved rating
+      const savedRating = localStorage.getItem('nitro5_platform_rating');
+      if (savedRating) {
+        currentRating = parseInt(savedRating);
+        updateStars(currentRating);
+        showRatingResult(currentRating);
+      }
+
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          const value = parseInt(this.getAttribute('data-value'));
+          currentRating = value;
+          updateStars(value);
+          saveRating(value);
+          showRatingResult(value);
+        });
+
+        star.addEventListener('mouseenter', function() {
+          const value = parseInt(this.getAttribute('data-value'));
+          highlightStars(value);
+        });
+      });
+
+      document.querySelector('#platformStars').addEventListener('mouseleave', () => {
+        updateStars(currentRating);
+      });
+
+      function updateStars(rating) {
+        stars.forEach((star, index) => {
+          if (index < rating) {
+            star.classList.add('active');
+          } else {
+            star.classList.remove('active');
+          }
+        });
+      }
+
+      function highlightStars(rating) {
+        stars.forEach((star, index) => {
+          if (index < rating) {
+            star.style.color = 'var(--contrast-accent)';
+            star.style.filter = 'brightness(1.3)';
+          } else {
+            star.style.color = 'var(--text-tertiary)';
+            star.style.filter = 'none';
+          }
+        });
+      }
+
+      function saveRating(rating) {
+        localStorage.setItem('nitro5_platform_rating', rating);
+      }
+
+      function showRatingResult(rating) {
+        const messages = {
+          1: 'We appreciate your feedback! We\'ll work to improve.',
+          2: 'Thanks for rating! Help us get better.',
+          3: 'Good! We\'re glad you\'re enjoying Nitro 5.',
+          4: 'Great! We\'re happy you like our platform.',
+          5: 'Excellent! Thank you for your support!'
+        };
+        
+        ratingResult.textContent = `You rated: ${rating}/5 - ${messages[rating]}`;
+        ratingResult.style.display = 'block';
+      }
+
+      // Random Quote Generator
+      const quotes = [
+        { text: "Gaming is not a crime, it's a lifestyle.", author: "Anonymous" },
+        { text: "The cake is a lie.", author: "Portal" },
+        { text: "War. War never changes.", author: "Fallout" },
+        { text: "Stay awhile and listen!", author: "Diablo" },
+        { text: "It's dangerous to go alone! Take this.", author: "The Legend of Zelda" },
+        { text: "A winner is you!", author: "Pro Wrestling" },
+        { text: "All your base are belong to us.", author: "Zero Wing" }
+      ];
+
+      const randomQuoteBtn = document.getElementById('randomQuoteBtn');
+      const randomQuoteDiv = document.getElementById('randomQuote');
+
+      if (randomQuoteBtn) {
+        randomQuoteBtn.addEventListener('click', () => {
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          const quote = quotes[randomIndex];
+          randomQuoteDiv.innerHTML = `
+            <div class="quote-content">
+              <p class="quote-text">"${quote.text}"</p>
+              <p class="quote-author">- ${quote.author}</p>
+            </div>
+          `;
+          randomQuoteDiv.style.display = 'block';
+        });
+      }
+
+      // Load More News (Mock)
+      const loadMoreBtn = document.querySelector('.load-more');
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+          alert('Loading more news... (Feature coming soon!)');
+        });
+      }
+
+      // Read More Button
+      const readMoreBtn = document.querySelector('.platform-info .btn-primary');
+      if (readMoreBtn) {
+        readMoreBtn.addEventListener('click', () => {
+          window.location.href = 'about.html';
+        });
+      }
+
+      // Load More Games Button
+      const loadMoreGamesBtn = document.querySelector('[data-i18n="platform.loadMoreGames"]');
+      if (loadMoreGamesBtn) {
+        loadMoreGamesBtn.addEventListener('click', () => {
+          window.location.href = 'store.html';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

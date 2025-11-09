@@ -6,25 +6,66 @@
   <title>Nitro 5 - Gaming Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/index.css">
-  <script src="js/app.js" defer></script>
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/user-actions.js" defer></script>
+  <script src="js/auth-modal.js" defer></script>
   <script src="js/i18n.js" defer></script>
-  <script src="js/enhancements.js" defer></script>
+  <script>
+    // Smooth scroll for all links
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add hover sound effect to buttons (optional)
+      const buttons = document.querySelectorAll('button, .btn-add, .btn-icon');
+      buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          btn.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+      });
+
+      // Parallax effect on hero section
+      window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero');
+        if (hero) {
+          const scrolled = window.pageYOffset;
+          hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+          hero.style.opacity = 1 - scrolled / 600;
+        }
+      });
+
+      // Game cards click animation
+      const gameCards = document.querySelectorAll('.game-card');
+      gameCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (!e.target.classList.contains('btn-add') && !e.target.classList.contains('btn-icon')) {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+              this.style.transform = '';
+            }, 200);
+          }
+        });
+      });
+    });
+  </script>
 </head>
-<body class="grid-layout">
+<body>
+  <!-- Header -->
   <header class="grid-header">
     <div class="logo">
       <img src="images/game_512.png" alt="icon" width="64" class="circular-logo">
     </div>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="store.html">Store</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="library.html">My Library</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+        <li><a href="store.html" data-i18n="nav.store">Store</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="library.html" data-i18n="nav.library">My Library</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+        <li><a href="ratings.html" data-i18n="nav.ratings">Ratings</a></li>
+        <li><a href="platform.html" data-i18n="nav.platform">Platform</a></li>
       </ul>
       <div class="nav-actions">
         <div class="lang-select">
@@ -35,179 +76,155 @@
             <option value="kk">Қазақша</option>
           </select>
         </div>
-        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">Theme</button>
-        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in">Sign in</button>
+        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙</button>
+        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
       </div>
     </nav>
-  </header> 
+  </header>
 
-  <main class="grid-main">
-  <section id="pageTools" class="tools-section" aria-label="Quick tools">
-    <div class="tools-row">
-      <span id="clock" class="clock" aria-live="polite"></span>
-      <div class="tools-gap"></div>
-      <button id="bgBtn" class="btn-mini" type="button" title="Change background">BG</button>
-      <button id="showTimeBtn" class="btn-mini" type="button" title="Show time">Time</button>
-      <span id="timeBox" class="time-box" aria-live="polite"></span>
-    </div>
-  </section>
-  <section id="media" class="section">
-  <div class="container">
-    <h2 class="section-title">Featured Games</h2>
-    <div class="snap-gallery" id="mediaGallery">
-      <button class="snap-btn prev" aria-label="Previous" type="button">‹</button>
-      <div class="snap-track" tabindex="0" aria-live="polite">
-        <figure class="snap-item">
-          <img src="images/cs2.jpg" alt="Counter-Strike 2">
-          <figcaption class="snap-caption">
-            <span class="title">Counter-Strike 2</span>
-            <span class="price">Price: $19.99</span>
-          </figcaption>
-        </figure>
-        <figure class="snap-item">
-          <img src="images/detroit.jpg" alt="Detroit: Become Human">
-          <figcaption class="snap-caption">
-            <span class="title">Detroit: Become Human</span>
-            <span class="price">Price: $29.99</span>
-          </figcaption>
-        </figure>
-        <figure class="snap-item">
-          <img src="images/RDR2.jpg" alt="Red Dead Redemption 2">
-          <figcaption class="snap-caption">
-            <span class="title">Red Dead Redemption 2</span>
-            <span class="price">Price: $49.99</span>
-          </figcaption>
-        </figure>
-          <figure class="snap-item">
-            <img src="images/thelast.jpg" alt="The Last of Us">
-            <figcaption class="snap-caption">
-              <span class="title">The Last of Us</span>
-              <span class="price">Price: $39.99</span>
-            </figcaption>
-          </figure>
-          <figure class="snap-item">
-            <img src="images/wwz.jpg" alt="World War Z">
-            <figcaption class="snap-caption">
-              <span class="title">World War Z</span>
-              <span class="price">Price: $14.99</span>
-            </figcaption>
-          </figure>
-          <figure class="snap-item">
-            <img src="images/mk1.jpg" alt="Mortal Kombat 1">
-            <figcaption class="snap-caption">
-              <span class="title">Mortal Kombat 1</span>
-              <span class="price">Price: $34.99</span>
-            </figcaption>
-          </figure>
-      </div>
-      <button class="snap-btn next" aria-label="Next" type="button">›</button>
-    </div>
-  </div>
-</section>
-    <section id="top-games" class="top-games">
-      <h2>Top Games</h2>
-      <div class="game-grid">
-        <div class="game-card">
-          <img src="images/cs2.jpg" alt="Counter-Strike 2">
-          <div class="card-body">
-            <h3><a href="game-pages/cs2-details.html">Counter-Strike 2</a></h3>
-            <p>Price: $20</p>
-            <button>Buy</button>
-          </div>
-        </div>
-        <div class="game-card">
-          <img src="images/detroit.jpg" alt="Detroit: Become Human">
-          <div class="card-body">
-            <h3><a href="game-pages/detroit-details.html">Detroit: Become Human</a></h3>
-            <p>Price: $30</p>
-            <button>Buy</button>
-          </div>
-        </div>
-        <div class="game-card">
-          <img src="images/RDR2.jpg" alt="Red Dead Redemption 2">
-          <div class="card-body">
-            <h3><a href="game-pages/rdr-details.html">Red Dead Redemption 2</a></h3>
-            <p>Price: $25</p>
-            <button>Buy</button>
-          </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to Nitro 5</h1>
+        <p class="hero-subtitle">Your ultimate gaming library. Discover, play, and collect the best games.</p>
+        <div class="hero-actions">
+          <a href="store.html" class="btn-large btn-primary">Browse Games</a>
+          <a href="library.html" class="btn-large btn-secondary">My Library</a>
         </div>
       </div>
-    </section>
-  <section id="interact" class="custom-section">
-    <h2>Rate Nitro 5</h2>
-    <div id="stars" class="stars" role="radiogroup" aria-label="Rate">
-      <button class="star" data-value="1" aria-checked="false" role="radio">★</button>
-      <button class="star" data-value="2" aria-checked="false" role="radio">★</button>
-      <button class="star" data-value="3" aria-checked="false" role="radio">★</button>
-      <button class="star" data-value="4" aria-checked="false" role="radio">★</button>
-      <button class="star" data-value="5" aria-checked="false" role="radio">★</button>
-    </div>
-    <p id="rateMsg">Click a star to rate.</p>
-
-    <h3 class="mt">About Nitro 5</h3>
-    <p id="aboutShort">
-      Nitro 5 is a modern gaming platform designed for passionate gamers.
-      <span id="aboutMore" hidden> We offer a comprehensive catalog, personal library, gaming news, and social features to enhance your gaming journey.</span>
-    </p>
-    <button id="readMoreBtn" class="btn-mini" type="button">Read more</button>
-    <div class="mt">
-      <button id="loadMoreBtn" class="btn" type="button">Load more games</button>
-      <button data-quote class="btn" type="button">Get Random Quote</button>
     </div>
   </section>
 
-    <section id="news-section" class="news">
-      <h2>Latest News</h2>
-      <div class="news-grid">
-        <article class="news-card">
-          <h3>CS2 Update Released!</h3>
-          <p>Check out the new maps and skins added in the latest CS2 update.</p>
-        </article>
-        <article class="news-card">
-          <h3>RDR2 Sale</h3>
-          <p>Red Dead Redemption 2 is now 30% off for a limited time!</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="reviews-section" class="reviews">
-      <h2>User Reviews</h2>
-      <div class="review-card">
-        <p>"CS2 is amazing! The graphics are insane!"</p>
-        <span>- John D.</span>
-      </div>
-      <div class="review-card">
-        <p>"RDR2 story mode kept me hooked for hours."</p>
-        <span>- Anna K.</span>
-      </div>
-    </section>
-</main>
-
-  
-    <div id="modalOverlay" class="overlay" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="close" id="closePopup" aria-label="Close">×</button>
-      <h3 id="modal-title">Sign in</h3>
-      <form id="popupForm" data-validate novalidate>
-        <div class="field">
-          <label for="subEmail">Email *</label>
-          <input id="subEmail" name="subEmail" type="email" required />
-          <small class="error" data-for="subEmail"></small>
+  <!-- Top Games Section -->
+  <section id="top-games" class="top-games">
+    <h2>Top Games</h2>
+    <div class="game-grid">
+      <div class="game-card" data-game-id="cs2">
+        <img src="images/cs2.jpg" alt="Counter-Strike 2">
+        <div class="card-body">
+          <h3><a href="game-pages/cs2-details.html">Counter-Strike 2</a></h3>
+          <p>Price: $20</p>
+          <button class="buy-btn" onclick="buyGame('cs2', 'Counter-Strike 2', 20, 'images/cs2.jpg')">Buy</button>
         </div>
-        <button type="submit" class="btn primary">Sign in</button>
-      </form>
+      </div>
+      <div class="game-card" data-game-id="detroit">
+        <img src="images/detroit.jpg" alt="Detroit: Become Human">
+        <div class="card-body">
+          <h3><a href="game-pages/detroit-details.html">Detroit: Become Human</a></h3>
+          <p>Price: $30</p>
+          <button class="buy-btn" onclick="buyGame('detroit', 'Detroit: Become Human', 30, 'images/detroit.jpg')">Buy</button>
+        </div>
+      </div>
+      <div class="game-card" data-game-id="rdr2">
+        <img src="images/RDR2.jpg" alt="Red Dead Redemption 2">
+        <div class="card-body">
+          <h3><a href="game-pages/rdr-details.html">Red Dead Redemption 2</a></h3>
+          <p>Price: $25</p>
+          <button class="buy-btn" onclick="buyGame('rdr2', 'Red Dead Redemption 2', 25, 'images/RDR2.jpg')">Buy</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Audio element for sound effects -->
-  <audio id="clickSound" preload="auto">
-    <source src="images/sounds/minecraft_click.mp3" type="audio/mpeg">
-  </audio>
+  <script>
+    // Buy game function
+    function buyGame(gameId, gameName, price, image) {
+      if (!window.isLoggedIn || !window.isLoggedIn()) {
+        alert('Please sign in to purchase games!');
+        document.getElementById('authModal').style.display = 'flex';
+        return;
+      }
 
-<footer class="grid-footer">
-    <p>&copy; 2024 Nitro 5 Gaming Platform</p>
-    <p>Group: SE-2409</p>
-    <p>Mansur Tasbolat & Eraly Zalel</p>
+      const result = window.addToLibrary(gameId, gameName, price, image);
+      if (result.success) {
+        alert('✅ ' + result.message + '\nCheck your Library!');
+        updateGameCardUI(gameId);
+      } else {
+        alert('⚠️ ' + result.message);
+      }
+    }
+
+    // Update card UI after purchase
+    function updateGameCardUI(gameId) {
+      const card = document.querySelector(`[data-game-id="${gameId}"]`);
+      if (card) {
+        const btn = card.querySelector('.buy-btn');
+        if (btn) {
+          btn.textContent = 'Owned';
+          btn.disabled = true;
+          btn.style.opacity = '0.6';
+          btn.style.cursor = 'not-allowed';
+        }
+      }
+    }
+
+    // Check ownership on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.isLoggedIn && window.isLoggedIn()) {
+        const library = window.getLibrary();
+        library.forEach(game => {
+          updateGameCardUI(game.id);
+        });
+      }
+    });
+  </script>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🎮</div>
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">Games Available</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number">100K+</div>
+          <div class="stat-label">Achievements</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Nitro 5</h4>
+          <p>Your ultimate gaming platform</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="store.html">Store</a>
+          <a href="library.html">Library</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>SE-2409</p>
+          <p>Mansur Tasbolat & Eraly Zalel</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Nitro 5 Gaming Platform. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Auth modal will be injected by auth-modal.js -->
+
 </body>
 </html>

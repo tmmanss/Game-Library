@@ -8,7 +8,7 @@
 .store .game-card {
   display: flex;
   flex-direction: column;
-  background: var(--secondary-color);
+  background: var(--bg-secondary);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -17,8 +17,8 @@
 
 .store .game-card:hover {
   transform: translateY(-8px);
-  border-color: var(--accent-color);
-  box-shadow: 0 15px 35px rgba(255, 152, 0, 0.2);
+  border-color: var(--accent-primary);
+  box-shadow: 0 15px 35px rgba(157, 148, 142, 0.25);
 }
 
 .store .game-card img {
@@ -36,35 +36,35 @@
 }
 
 .store .card-body h3 a {
-  color: #ffffff;
+  color: var(--text-primary);
   text-decoration: none;
   transition: color 0.3s ease;
   font-size: 1.2rem;
 }
 
 .store .card-body h3 a:hover {
-  color: #ff9800;
+  color: var(--accent-primary);
 }
 
 .price {
-  color: #ff9800;
+  color: var(--accent-primary);
   font-weight: 700;
   font-size: 1.3rem;
   margin: 0;
 }
 
 .desc {
-  color: #d0d0d0;
+  color: var(--text-secondary);
   line-height: 1.5;
   flex: 1;
 }
 
 .btn-buy {
-  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
-  color: #fff;
+  color: var(--bg-primary);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -72,14 +72,14 @@
 }
 
 .btn-buy:hover {
-  background: linear-gradient(90deg, #ffb74d, #ff9800);
+  background: linear-gradient(135deg, var(--accent-hover), var(--accent-primary));
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+  box-shadow: var(--shadow-md);
 }
 
 .hl {
-  background: rgba(255, 152, 0, .22);
-  color: #ffae42;
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
   padding: 0 .15em;
   border-radius: .2em;
 }
@@ -106,14 +106,14 @@
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  background: #1e2335;        
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-md);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .lazy-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+  box-shadow: var(--shadow-lg);
 }
 
 .lazy-card img {

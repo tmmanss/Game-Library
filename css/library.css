@@ -8,7 +8,7 @@
 .library .game-card {
   display: flex;
   flex-direction: column;
-  background: var(--secondary-color);
+  background: var(--bg-secondary);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -17,8 +17,8 @@
 
 .library .game-card:hover {
   transform: translateY(-10px);
-  border-color: var(--accent-color);
-  box-shadow: 0 20px 40px rgba(255, 152, 0, 0.3);
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 40px rgba(157, 148, 142, 0.25);
 }
 
 .library .game-card img {
@@ -35,17 +35,21 @@
   flex: 1;
 }
 
+.library .card-body h3 {
+  color: var(--text-primary);
+}
+
 .library .desc {
-  color: #d0d0d0;
+  color: var(--text-secondary);
   font-size: 0.95rem;
 }
 
 .btn-play {
-  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
-  color: #fff;
+  color: var(--bg-primary);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -53,7 +57,7 @@
 }
 
 .btn-play:hover {
-  background: linear-gradient(90deg, #ffb74d, #ff9800);
-  transform: scale(1.08);
-  box-shadow: 0 5px 20px rgba(255, 152, 0, 0.4);
+  background: linear-gradient(135deg, var(--accent-hover), var(--accent-primary));
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
 }

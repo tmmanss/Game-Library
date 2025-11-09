@@ -18,6 +18,13 @@
     <!-- jQuery logic -->
     <script src="js/jquery_app.js" defer></script>
 
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/user-actions.js" defer></script>
+    <script src="js/auth-modal.js" defer></script>
+    <script src="js/ratings.js" defer></script>
+    <script src="js/search.js" defer></script>
+    <script src="js/api.js" defer></script>
     <script src="js/app.js" defer></script>
   <link rel="stylesheet" href="css/style.css">
 <script src="js/i18n.js" defer></script>
@@ -30,11 +37,14 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="store.html" class="active">Store</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="library.html">My Library</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="store.html" class="active" data-i18n="nav.store">Store</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="library.html" data-i18n="nav.library">My Library</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+        <li><a href="ratings.html" data-i18n="nav.ratings">Ratings</a></li>
+        <li><a href="platform.html" data-i18n="nav.platform">Platform</a></li>
       </ul>
       <div class="nav-actions">
         <div class="lang-select">
@@ -45,8 +55,8 @@
             <option value="kk">Қазақша</option>
           </select>
         </div>
-        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">Theme</button>
-        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in">Sign in</button>
+        <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙 Dark</button>
+        <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
       </div>
     </nav>
   </header> 
@@ -171,6 +181,15 @@
       </figure>
     </div>
   </section>
+
+  <!-- API Games Section -->
+  <section id="api-games-section" class="api-section">
+    <h2>Trending Games from RAWG API</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
+      Live data from RAWG Video Games Database
+    </p>
+    <!-- Games will be loaded here by API -->
+  </section>
     </main>
     <div id="modalOverlay" class="overlay" hidden>
       <div
@@ -197,8 +216,23 @@
     </audio>
   <footer class="grid-footer">
       <p>&copy; 2024 Nitro 5 Gaming Platform</p>
-      <p>Group: SE-2409</p>
-      <p>Mansur Tasbolat & Eraly Zalel</p>
+      <p>Group: SE-2409 | Mansur Tasbolat & Eraly Zalel</p>
+      <p id="currentTime" class="footer-time"></p>
     </footer>
+
+    <script>
+      function updateFooterTime() {
+        const timeEl = document.getElementById('currentTime');
+        if (timeEl) {
+          const now = new Date();
+          timeEl.textContent = now.toLocaleString('en-US', { 
+            month: 'short', day: '2-digit', year: 'numeric',
+            hour: '2-digit', minute: '2-digit', second: '2-digit' 
+          });
+        }
+      }
+      updateFooterTime();
+      setInterval(updateFooterTime, 1000);
+    </script>
 </body>
 </html>

@@ -198,33 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
     addHoverAnimation(card);
   });
 
+  // Audio enabled silently on first interaction
   const enableAudio = () => {
     if (!audioEnabled && clickSound) {
       audioEnabled = true;
       clickSound.volume = 0.3;
-      console.log("🔊 Audio enabled for sound effects");
-      
-      const audioIndicator = document.createElement("div");
-      audioIndicator.textContent = "🔊 Sound enabled!";
-      audioIndicator.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #4CAF50;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 5px;
-        z-index: 10000;
-        font-size: 14px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      `;
-      document.body.appendChild(audioIndicator);
-      
-      setTimeout(() => {
-        if (audioIndicator.parentNode) {
-          audioIndicator.parentNode.removeChild(audioIndicator);
-        }
-      }, 3000);
     }
   };
 

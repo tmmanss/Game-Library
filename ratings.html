@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page.ratings.title">Rate Nitro 5 - Gaming Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ratings.css">
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/user-actions.js" defer></script>
+  <script src="js/auth-modal.js" defer></script>
+  <script src="js/ratings.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+</head>
+<body class="grid-layout">
+  <header class="grid-header">
+    <div class="logo">
+      <img src="images/game_512.png" alt="Nitro 5" width="64" class="circular-logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="store.html" data-i18n="nav.store">Store</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="library.html" data-i18n="nav.library">Library</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+        <li><a href="ratings.html" class="active" data-i18n="nav.ratings">Ratings</a></li>
+        <li><a href="platform.html" data-i18n="nav.platform">Platform</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-select">
+          <select id="langSelect" class="form-select">
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+            <option value="kk">KK</option>
+          </select>
+        </div>
+        <button id="themeToggle" class="btn-mini">🌙</button>
+        <button id="openPopup" class="btn-mini sign-in-btn" data-i18n="ui.signin">Sign in</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="grid-main">
+    <section class="ratings-section">
+      <h1 data-i18n="ratings.title">Rate Nitro 5 Platform</h1>
+      <p class="subtitle" data-i18n="ratings.subtitle">Share your experience with our gaming platform</p>
+
+      <div class="rating-container">
+        <div class="rating-display">
+          <div class="avg-rating">
+            <span class="rating-number" id="avgRating">0.0</span>
+            <div class="stars-large" id="avgStars">★★★★★</div>
+            <p class="rating-count" id="ratingCount" data-i18n="ratings.noRatings">No ratings yet</p>
+          </div>
+        </div>
+
+        <div class="rating-widget-container">
+          <h2 data-i18n="ratings.yourRating">Your Rating</h2>
+          <div id="platformRating" data-rating-widget="nitro5-platform"></div>
+          <p id="rateMsg" class="rating-message"></p>
+        </div>
+
+        <div class="rating-breakdown">
+          <h3 data-i18n="ratings.breakdown">Rating Breakdown</h3>
+          <div class="breakdown-bars">
+            <div class="bar-row">
+              <span>5 ★</span>
+              <div class="bar"><div class="fill" id="bar5" style="width: 0%"></div></div>
+              <span id="count5">0</span>
+            </div>
+            <div class="bar-row">
+              <span>4 ★</span>
+              <div class="bar"><div class="fill" id="bar4" style="width: 0%"></div></div>
+              <span id="count4">0</span>
+            </div>
+            <div class="bar-row">
+              <span>3 ★</span>
+              <div class="bar"><div class="fill" id="bar3" style="width: 0%"></div></div>
+              <span id="count3">0</span>
+            </div>
+            <div class="bar-row">
+              <span>2 ★</span>
+              <div class="bar"><div class="fill" id="bar2" style="width: 0%"></div></div>
+              <span id="count2">0</span>
+            </div>
+            <div class="bar-row">
+              <span>1 ★</span>
+              <div class="bar"><div class="fill" id="bar1" style="width: 0%"></div></div>
+              <span id="count1">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="latest-news">
+      <h2 data-i18n="news.title">Latest Gaming News</h2>
+      <div class="news-grid">
+        <article class="news-card">
+          <h3 data-i18n="news.item1.title">CS2 Major Update Released</h3>
+          <p data-i18n="news.item1.text">New maps, skins, and gameplay improvements are now live!</p>
+          <span class="news-date">Nov 5, 2024</span>
+        </article>
+        <article class="news-card">
+          <h3 data-i18n="news.item2.title">RDR2 Anniversary Sale</h3>
+          <p data-i18n="news.item2.text">Celebrate with 40% off this weekend only!</p>
+          <span class="news-date">Nov 7, 2024</span>
+        </article>
+        <article class="news-card">
+          <h3 data-i18n="news.item3.title">New Games Coming Soon</h3>
+          <p data-i18n="news.item3.text">Stay tuned for exciting new titles arriving this month!</p>
+          <span class="news-date">Nov 8, 2024</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="grid-footer">
+    <p>&copy; 2024 Nitro 5 Gaming Platform</p>
+    <p>Group: SE-2409 | Mansur Tasbolat & Eraly Zalel</p>
+    <p id="currentTime" class="footer-time"></p>
+  </footer>
+
+  <script>
+    function updateFooterTime() {
+      const timeEl = document.getElementById('currentTime');
+      if (timeEl) {
+        const now = new Date();
+        timeEl.textContent = now.toLocaleString('en-US', { 
+          month: 'short', day: '2-digit', year: 'numeric',
+          hour: '2-digit', minute: '2-digit', second: '2-digit' 
+        });
+      }
+    }
+    updateFooterTime();
+    setInterval(updateFooterTime, 1000);
+
+    function updateRatingDisplay() {
+      const ratings = window.getGameRatings?.('nitro5-platform') || [];
+      const total = ratings.reduce((sum, r) => sum + r.rating, 0);
+      const avg = ratings.length ? (total / ratings.length).toFixed(1) : 0;
+      
+      document.getElementById('avgRating').textContent = avg;
+      document.getElementById('ratingCount').textContent = 
+        ratings.length ? `${ratings.length} rating${ratings.length > 1 ? 's' : ''}` : 'No ratings yet';
+      
+      const breakdown = [0, 0, 0, 0, 0];
+      ratings.forEach(r => breakdown[r.rating - 1]++);
+      
+      const max = Math.max(...breakdown, 1);
+      breakdown.forEach((count, i) => {
+        const percent = (count / max) * 100;
+        document.getElementById(`bar${i + 1}`).style.width = percent + '%';
+        document.getElementById(`count${i + 1}`).textContent = count;
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('platformRating');
+      if (container && window.createRatingWidget) {
+        window.createRatingWidget(container, 'nitro5-platform', (rating, avgRating) => {
+          const msg = document.getElementById('rateMsg');
+          msg.textContent = `Thank you! You rated ${rating} stars. Average: ${avgRating} ⭐`;
+          msg.style.color = 'var(--accent-color)';
+          updateRatingDisplay();
+        });
+      }
+      updateRatingDisplay();
+    });
+  </script>
+</body>
+</html>
