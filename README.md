@@ -185,7 +185,6 @@ npx http-server
 
 **Institution**: Astana IT University  
 **Course**: Web Technologies - Front-End Development  
-**Instructor**: [Your Instructor's Name]
 
 ## 📄 License
 
@@ -198,12 +197,6 @@ This project is created for educational purposes as part of the Web Technologies
 - Google Fonts for typography
 - Astana IT University for the opportunity
 
-## 📞 Contact
-
-For questions or feedback:
-- **Email**: contact@nitro5.com
-- **Phone**: +7 (777) 123-4567
-- **Address**: Astana IT University, Mangilik El, 55/11
 
 ## 🔄 Version History
 
