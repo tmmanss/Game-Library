@@ -351,3 +351,59 @@
 }
 .copy-btn img { pointer-events: none; }
 .copy-btn.copied { background:#16a34a; color:#fff; }
+
+/* Fix: ensure Contact/FAQ sections are readable in light theme
+   Use site variables where available, but provide sensible fallbacks
+   so text and form controls don't become invisible on light backgrounds. */
+:root[data-theme="light"] .grid-main,
+:root[data-theme="light"] .grid-main .content-section,
+:root[data-theme="light"] .grid-main .content-card,
+:root[data-theme="light"] .team-card,
+:root[data-theme="light"] .contact-item,
+:root[data-theme="light"] .accordion-panel,
+:root[data-theme="light"] .accordion-panel p,
+:root[data-theme="light"] .content-section h2,
+:root[data-theme="light"] .copy-text,
+:root[data-theme="light"] .field label,
+:root[data-theme="light"] .field input,
+:root[data-theme="light"] .field textarea,
+:root[data-theme="light"] .copy-btn,
+:root[data-theme="light"] .accordion-header {
+  /* Primary readable text color on light theme */
+  color: var(--text-primary, #111) !important;
+}
+
+:root[data-theme="light"] .content-card,
+:root[data-theme="light"] .team-card,
+:root[data-theme="light"] .contact-item,
+:root[data-theme="light"] .accordion-panel {
+  /* Keep panels slightly off-white for contrast with page background */
+  background: var(--bg-secondary, #ffffff) !important;
+  border-color: var(--border-color, #e5e7eb) !important;
+}
+
+:root[data-theme="light"] .field input,
+:root[data-theme="light"] .field textarea {
+  background: var(--bg-tertiary, #f8fafc) !important;
+  color: var(--text-primary, #111) !important;
+  border: 1px solid var(--border-color, #d1d5db) !important;
+}
+
+:root[data-theme="light"] .copy-btn {
+  background: var(--bg-tertiary, #f3f4f6) !important;
+  color: var(--text-primary, #111) !important;
+  border: 1px solid var(--border-color, #d1d5db) !important;
+}
+
+:root[data-theme="light"] .accordion-header {
+  background: var(--bg-tertiary, #f8fafc) !important;
+  border: 1px solid var(--border-color, #e5e7eb) !important;
+}
+
+/* Ensure FAQ expanded panel text is readable and links/highlights remain visible */
+:root[data-theme="light"] .accordion-panel p .highlight,
+:root[data-theme="light"] .highlight {
+  background: rgba(79,70,229,0.12); /* subtle purple highlight */
+  color: var(--text-primary, #111) !important;
+}
+
