@@ -53,6 +53,21 @@ $(document).ready(function() {
   $(document).on('click', '.suggest-item', function () {
     $input.val($(this).text()).trigger('input');
   });
+
+  const observer = new MutationObserver(() => {
+    const q = $input.val().trim();
+    if (!q) return;
+    $('.game-grid .game-card').each(function () {
+      const $card = $(this);
+      highlightCard($card, q);
+    });
+  });
+
+  const $grid = $('.game-grid');
+  if ($grid.length) {
+    observer.observe($grid[0], { childList: true, subtree: false });
+  }
+
 })();
 
 

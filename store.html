@@ -12,68 +12,56 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/store.css" />
+  </head>
 
-    <!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- jQuery logic -->
-    <script src="js/jquery_app.js" defer></script>
-
-    <script src="js/theme.js"></script>
-    <script src="js/auth.js" defer></script>
-    <script src="js/user-actions.js" defer></script>
-    <script src="js/auth-modal.js" defer></script>
-    <script src="js/ratings.js" defer></script>
-    <script src="js/search.js" defer></script>
-    <script src="js/api.js" defer></script>
-    <script src="js/app.js" defer></script>
-  <link rel="stylesheet" href="css/style.css">
-<script src="js/i18n.js" defer></script>
-<script src="js/enhancements.js" defer></script>
-</head>
   <body class="grid-layout">
-<header class="grid-header">
-  <div class="logo">
-    <a href="index.html">
-      <img src="images/game_512.png" alt="icon" width="64" class="circular-logo">
-    </a>
-  </div>
-
-  <!-- Бургер -->
-  <button class="burger" id="burger" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-  <nav id="navbar">
-    <ul>
-      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-      <li><a href="store.html" class="active" data-i18n="nav.store">Store</a></li>
-      <li><a href="about.html" data-i18n="nav.about">About</a></li>
-      <li><a href="library.html" data-i18n="nav.library">My Library</a></li>
-      <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
-      <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
-      <li><a href="ratings.html" data-i18n="nav.ratings">Ratings</a></li>
-      <li><a href="platform.html" data-i18n="nav.platform">Platform</a></li>
-    </ul>
-
-    <div class="nav-actions">
-      <div class="lang-select">
-        <label for="langSelect" class="form-label" style="margin:0;">
-          <span data-i18n="ui.language">Language:</span>
-        </label>
-        <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
-          <option value="en">English</option>
-          <option value="ru">Русский</option>
-          <option value="kk">Қазақша</option>
-        </select>
+    <header class="grid-header">
+      <div class="logo">
+        <a href="index.html">
+          <img
+            src="images/game_512.png"
+            alt="icon"
+            width="64"
+            class="circular-logo"
+          />
+        </a>
       </div>
-      <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙</button>
-      <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
-    </div>
-  </nav>
-</header>
 
+      <!-- Бургер -->
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="navbar">
+        <ul>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="store.html" class="active" data-i18n="nav.store">Store</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="library.html" data-i18n="nav.library">My Library</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+          <li><a href="reviews.html" data-i18n="nav.reviews">Reviews</a></li>
+          <li><a href="ratings.html" data-i18n="nav.ratings">Ratings</a></li>
+          <li><a href="platform.html" data-i18n="nav.platform">Platform</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="lang-select">
+            <label for="langSelect" class="form-label" style="margin:0;">
+              <span data-i18n="ui.language">Language:</span>
+            </label>
+            <select id="langSelect" class="form-select form-select-sm" style="width:auto;">
+              <option value="en">English</option>
+              <option value="ru">Русский</option>
+              <option value="kk">Қазақша</option>
+            </select>
+          </div>
+          <button id="themeToggle" class="btn-mini" type="button" title="Toggle theme">🌙</button>
+          <button id="openPopup" class="btn-mini sign-in-btn" type="button" title="Sign in" data-i18n="ui.signin">Sign in</button>
+        </div>
+      </nav>
+    </header>
 
     <main class="grid-main">
       <section id="store-section" class="store">
@@ -87,154 +75,89 @@
             placeholder="Search for a game..."
             class="search-box"
           />
-          <ul id="suggestions"></ul>
         </div>
 
+        <!-- 🎮 Game Grid -->
         <div class="game-grid" id="gameList">
-          <article class="game-card">
-            <img src="images/cs2.jpg" alt="Counter-Strike 2" />
-            <div class="card-body">
-              <h3>
-                <a href="game-pages/cs2-details.html">Counter-Strike 2</a>
-              </h3>
-              <p class="price">$19.99</p>
-              <p class="desc">
-                The legendary tactical shooter reborn with modern graphics and
-                physics.
-              </p>
-              <button class="btn-buy">Buy Now</button>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <img src="images/detroit.jpg" alt="Detroit: Become Human" />
-            <div class="card-body">
-              <h3>
-                <a href="game-pages/detroit-details.html"
-                  >Detroit: Become Human</a
-                >
-              </h3>
-              <p class="price">$29.99</p>
-              <p class="desc">
-                Interactive drama where every choice defines the fate of
-                androids and humanity.
-              </p>
-              <button class="btn-buy">Buy Now</button>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <img src="images/RDR2.jpg" alt="Red Dead Redemption 2" />
-            <div class="card-body">
-              <h3>
-                <a href="game-pages/rdr-details.html">Red Dead Redemption 2</a>
-              </h3>
-              <p class="price">$49.99</p>
-              <p class="desc">
-                Epic Western adventure with open world, deep story and cinematic
-                gameplay.
-              </p>
-              <button class="btn-buy">Buy Now</button>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <img src="images/thelast.jpg" alt="The Last of Us" />
-            <div class="card-body">
-              <h3>
-                <a href="game-pages/the-last-details.html">The Last of Us</a>
-              </h3>
-              <p class="price">$39.99</p>
-              <p class="desc">
-                Emotional survival journey through a post-apocalyptic world.
-              </p>
-              <button class="btn-buy">Buy Now</button>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <img src="images/wwz.jpg" alt="World War Z" />
-            <div class="card-body">
-              <h3><a href="game-pages/wwz2-details.html">World War Z</a></h3>
-              <p class="price">$14.99</p>
-              <p class="desc">
-                Fast-paced co-op shooter with massive hordes of zombies.
-              </p>
-              <button class="btn-buy">Buy Now</button>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <img src="images/mk1.jpg" alt="Mortal Kombat 1" />
-            <div class="card-body">
-              <h3><a href="game-pages/mk1-details.html">Mortal Kombat 1</a></h3>
-              <p class="price">$34.99</p>
-              <p class="desc">
-                The iconic fighting game returns with brutal combat and new
-                storylines.
-              </p>
-              <button class="btn-buy">Buy Now</button>
-            </div>
-          </article>
+          <p style="text-align:center;">Loading games...</p>
         </div>
       </section>
-  <section id="lazy-section" class="coming">
-    <h2>More Games Coming Soon...</h2>
 
-    <div class="lazy-grid">
-      <figure class="lazy-card">
-        <img class="lazy" data-src="images/mk1.jpg" alt="Mortal Kombat 1">
-      </figure>
-
-      <figure class="lazy-card">
-        <img class="lazy" data-src="images/wwz.jpg" alt="World War Z">
-      </figure>
-
-      <figure class="lazy-card">
-        <img class="lazy" data-src="images/thelast.jpg" alt="The Last of Us">
-      </figure>
-    </div>
-  </section>
-
-  <!-- API Games Section -->
-  <section id="api-games-section" class="api-section">
-    <h2>Trending Games from RAWG API</h2>
-    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
-      Live data from RAWG Video Games Database
-    </p>
-    <!-- Games will be loaded here by API -->
-  </section>
+      <section id="lazy-section" class="coming">
+        <h2>More Games Coming Soon...</h2>
+        <div class="lazy-grid">
+          <figure class="lazy-card">
+            <img class="lazy" data-src="images/mk1.jpg" alt="Mortal Kombat 1">
+          </figure>
+          <figure class="lazy-card">
+            <img class="lazy" data-src="images/wwz.jpg" alt="World War Z">
+          </figure>
+          <figure class="lazy-card">
+            <img class="lazy" data-src="images/thelast.jpg" alt="The Last of Us">
+          </figure>
+        </div>
+      </section>
     </main>
-    <div id="modalOverlay" class="overlay" hidden>
-      <div
-        class="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-      >
-        <button class="close" id="closePopup" aria-label="Close">×</button>
-        <h3 id="modal-title">Subscribe to newsletter</h3>
-        <form id="popupForm" data-validate novalidate>
-          <div class="field">
-            <label for="subEmail">Email *</label>
-            <input id="subEmail" name="subEmail" type="email" required />
-            <small class="error" data-for="subEmail"></small>
-          </div>
-          <button type="submit" class="btn primary">Subscribe</button>
-        </form>
-      </div>
-    </div>
 
-    <audio id="clickSound" preload="auto">
-      <source src="images/sounds/minecraft_click.mp3" type="audio/mpeg" />
-    </audio>
-  <footer class="grid-footer">
+    <footer class="grid-footer">
       <p>&copy; 2024 Nitro 5 Gaming Platform</p>
       <p>Group: SE-2409 | Mansur Tasbolat & Eraly Zalel</p>
       <p id="currentTime" class="footer-time"></p>
     </footer>
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/jquery_app.js" defer></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/user-actions.js" defer></script>
+    <script src="js/auth-modal.js" defer></script>
+    <script src="js/ratings.js" defer></script>
+    <script src="js/search.js" defer></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/enhancements.js" defer></script>
+
     <script>
+      async function loadTrendingGames() {
+        const gameList = document.getElementById('gameList');
+        const result = await getTrendingGamesAPI(12);
+        gameList.innerHTML = '';
+
+        if (result.success && result.games.length > 0) {
+          result.games.forEach(game => displayAPIGameCard(game, gameList));
+        } else {
+          gameList.innerHTML = '<p style="text-align:center;color:red;">Failed to load games from API.</p>';
+        }
+      }
+
+      async function searchGames(query) {
+        const gameList = document.getElementById('gameList');
+        if (!query.trim()) return loadTrendingGames();
+
+        gameList.innerHTML = '<p style="text-align:center;">Searching...</p>';
+        const result = await searchGamesAPI(query, 1, 12);
+
+        gameList.innerHTML = '';
+        if (result.success && result.games.length > 0) {
+          result.games.forEach(game => displayAPIGameCard(game, gameList));
+        } else {
+          gameList.innerHTML = '<p style="text-align:center;color:gray;">No results found.</p>';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        loadTrendingGames();
+
+        const searchInput = document.getElementById('searchInput');
+        let timeout;
+        searchInput.addEventListener('input', e => {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => searchGames(e.target.value), 500);
+        });
+      });
+
+      // Footer time
       function updateFooterTime() {
         const timeEl = document.getElementById('currentTime');
         if (timeEl) {
@@ -248,5 +171,5 @@
       updateFooterTime();
       setInterval(updateFooterTime, 1000);
     </script>
-</body>
+  </body>
 </html>

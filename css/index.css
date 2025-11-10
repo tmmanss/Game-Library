@@ -950,6 +950,24 @@
   transform: scale(1.05);
 }
 
+.buy-btn {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: var(--bg-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.buy-btn:hover {
+  background: linear-gradient(135deg, var(--accent-hover), var(--accent-primary));
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
 /* === STATS SECTION === */
 .stats-section {
   padding: 4rem 0;
@@ -1213,6 +1231,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+#gameCarousel img {
+  height: 300px;
+  width: 600px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
 
 .nav-actions .sign-in-btn {
   border: 1px solid var(--border-color);

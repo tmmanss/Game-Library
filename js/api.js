@@ -1,9 +1,5 @@
-// RAWG API Integration
-// API Key: You need to get your own key from https://rawg.io/apidocs
-// For demo purposes, we'll use a public key (rate limited)
-
 (() => {
-  const API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your actual RAWG API key
+  const API_KEY = '93483da3dcef43048fa8253c6a969fa9';
   const BASE_URL = 'https://api.rawg.io/api';
   const CACHE_KEY = 'nitro5_api_cache';
   const CACHE_DURATION = 3600000; // 1 hour in milliseconds

@@ -500,6 +500,17 @@ nav a.active {
   font-weight: 600;
 }
 
+.card-body h3 a:hover {
+  color: var(--accent-primary);
+}
+
+.card-body h3 a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1.2rem;
+}
+
 .grid-layout {
   display: grid;
   grid-template-areas: 
