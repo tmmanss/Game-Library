@@ -155,7 +155,6 @@ const games = [
     btn.prop("disabled", true).html('<span class="spinner"></span> Please wait…');
     setTimeout(() => {
       btn.prop("disabled", false).text(original);
-      showToast("Form submitted successfully!");
     }, 1500);
   });
 
